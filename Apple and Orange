@@ -1,0 +1,32 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */ 
+      long int s,t,a,b,m,n;int count1=0,count2=0;
+        cin >> s >> t;
+         cin >> a >> b;
+         cin >> m >> n; 
+         unsigned long int A[m],O[n];
+        for(int i=0;i<m;i++)
+           { cin >> A[i];
+              if((a+A[i])>=s && (a+A[i])<=t)
+                    count1++;   
+           }
+          for(int j=0;j<n;j++)
+             { cin >> O[j];
+                 if((b+O[j])>=s && (b+O[j])<=t)
+                        count2++;          
+                        }
+         
+        cout << count1 << endl;
+        cout << count2 ;
+            
+       
+    return 0;
+}

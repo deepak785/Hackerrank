@@ -1,0 +1,81 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int gcd(int a,int b)
+ {  
+    while(b>0)
+    {
+        int temp=b;
+        b=a%b;
+        a=temp;
+        
+    }
+    return a;
+ 	
+ }
+ int lcm(int a,int b)
+   {
+   	  return a*(b/gcd(a,b)) ;
+     
+   }
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+       int n,m,count=0;
+        cin >> n >> m;
+        int A[n],B[m];
+         for(int i=0;i<n;i++)
+              cin >> A[i];
+          for(int j=0;j<m;j++)
+             { cin >> B[j];
+             }
+        
+          //sort(A,A+n);
+          // sort(B,B+m);
+           int lim;
+       /*  for(int i=0;i<m;i++)
+         {
+             if(B[i]>A[n-1])
+             {
+                 lim=B[i];
+                 break;
+             }
+         }*/
+       int result1=A[0],result2=B[0];
+         for(int j=1;j<m;j++)
+           {  //result1=lcm(result1,A[i]);
+               result2=gcd(result2,B[j]); 
+            }
+          for(int i=0;i<n;i++)
+          {
+              result1=lcm(result1,A[i]);
+          }
+              int g=1; 
+           while(result1*g <=result2)
+           {   if((result2%(result1*g))==0)
+                   count++;
+              g++;
+           }
+    
+    
+         /*for(int i=A[n-1];i<=lim;)
+         {   for(int j=0;j<m;j++)
+               {  if(B[j]%i==0 && j==m-1)
+                      count++; 
+                  else if(B[j]%i!=0)
+                      break;
+               }
+             
+         }*/
+                 
+        cout << count ;
+         //cout << result1 <<" " << result2 ;  
+      
+          
+      
+    return 0;
+}

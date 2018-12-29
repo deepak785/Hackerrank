@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int minimumLoss(vector<pair<long,long>> price) {
+    // Complete this function
+   long int md=LONG_MAX;
+    for(int i=1;i<price.size()-1;i++)
+    {
+       if(price[i].second>price[i-1].second)
+           md=min(md,price[i-1].first-price[i].first);
+    }
+    return md;
+}
+bool comp(pair<long,long> a,pair<long,long> b)
+{
+    return a.first>b.first;
+}
+
+int main() {
+    int n;long int x;
+    cin >> n;
+    vector<pair<long,long>> price(n);
+    for(int price_i = 0; price_i < n; price_i++){
+       cin >> x;
+           price.push_back(make_pair(x,price_i));
+    }
+    sort(price.begin(),price.end(),comp);
+    
+    int result = minimumLoss(price);
+    cout << result << endl;
+    return 0;
+}

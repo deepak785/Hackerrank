@@ -1,0 +1,48 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int n,x,j,k,sum=0;
+    cin >> n >> k;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+         cin >> a[i];
+    }
+    sort(a,a+n);
+    j=n-1;x=0;
+    //while(n>0)
+   // {  
+        int temp=k;
+        while(k>0)
+        {
+           sum=sum + (x+1)*a[j] ;
+            j--;
+            n--;
+           // cout << sum << endl;
+            //cout << j << endl;
+            if(n<=0)
+            {
+                break;
+            }
+            k--;
+            if(k<=0)
+            {
+                k=temp;
+                x++;
+            }
+            
+        }
+     //   x++;
+      //  k=temp;
+   // }
+    cout << sum ;
+    
+    return 0;
+}

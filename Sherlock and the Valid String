@@ -1,0 +1,55 @@
+#include<iostream>
+#include<cmath>
+#include<string>
+using namespace std;
+int cnt[26];
+
+int main()
+{    
+    string s;
+    cin>>s;
+    int l  = s.length(), i;
+    for(i=0; i<l; i++){
+        
+        int k = s[i] - 97;
+        cnt[k]++;
+    }  
+    
+    int mx , mn;
+    mx = -1;
+    mn = 10000000;
+    for(i=0; i<26; i++){
+        mx = max(mx, cnt[i]);
+        if(cnt[i] != 0)
+            mn = min(mn, cnt[i]);
+    }
+ //cout<<mx<<endl<<mn<<endl;
+   if(mx - mn == 0){
+        cout<<"YES";
+    }
+    else{
+        for(i=0; i<26; i++){
+            if(cnt[i]){
+                cnt[i]--;
+               
+                mx = -1;
+             mn = 10000000;
+            
+                for(int j=0; j<26; j++){
+                    mx = max(mx, cnt[j]);
+                    if(cnt[j] != 0)
+                        mn = min(mn, cnt[j]);
+                    }
+              //  cout<<i<<"  "<<mx<<"  "<<mn<<endl;
+                if(mx==mn){
+                    cout<<"YES";
+                    return 0;
+                }
+                cnt[i]++;
+            }
+        }
+        cout<<"NO";
+    }
+    
+    return 0;	    
+}
